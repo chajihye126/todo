@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo/core/theme/app_theme.dart';
 import 'package:todo/core/utils/size_utils.dart';
 import 'package:todo/di/di.dart';
 import 'package:todo/presentation/view/main_tab_screen.dart';
@@ -36,8 +37,16 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff1A3D66),
-        body: AnimatedBuilder(animation: animationViewModel.animation, builder: (context, child) => Transform.translate(offset: Offset(0, animationViewModel.animation.value * ssH(context) / 2)),),
+        backgroundColor: AppTheme.primaryColor,
+        body: Center(
+          child: AnimatedBuilder(
+            animation: animationViewModel.animation,
+            builder: (context, child) => Transform.translate(
+              offset: Offset(0, animationViewModel.animation.value * ssH(context) / 2),
+              child: Image.asset('assets/logo.png', width: 200),
+            ),
+          ),
+        ),
       ),
     );
   }
