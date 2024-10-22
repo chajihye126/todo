@@ -13,6 +13,9 @@ class AppTheme {
       primary: primaryColor,
       secondary: accentColor,
     ),
+    appBarTheme: AppBarTheme(
+      foregroundColor: primaryColor
+    ),
     textTheme: TextTheme(
       bodyMedium: TextStyle(color: Colors.black),
       titleLarge: TextStyle(fontWeight: FontWeight.bold),
