@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:todo/core/theme/app_theme.dart';
 import 'package:todo/di/di.dart';
 import 'package:todo/presentation/view/tab_screen/add_todo_screen.dart';
 import 'package:todo/presentation/view_model/main_tab_view_model.dart';
