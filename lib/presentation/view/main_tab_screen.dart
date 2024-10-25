@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo/core/theme/app_theme.dart';
 import 'package:todo/di/di.dart';
@@ -42,21 +43,23 @@ class _MainTabScreenState extends State<MainTabScreen> {
       BottomNavigationBar(
         onTap: mainTabViewModel.bottomNavOnTap,
         currentIndex: mainTabViewModel.bottomNavCurrentIndex,
-        backgroundColor: Colors.blue,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        selectedItemColor: Color(0xff212529),
         items: [
-          BottomNavigationBarItem(icon: SvgPicture.asset('assets/icon/calendar.svg'), label: 'calendar'),
-          BottomNavigationBarItem(icon: SvgPicture.asset('assets/icon/calendar.svg'), label: 'calendar'),
-          BottomNavigationBarItem(icon: SvgPicture.asset('assets/icon/calendar.svg'), label: 'calendar'),
-          BottomNavigationBarItem(icon: Container(), label: '')
+          BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(FeatherIcons.search), label: 'search'),
+          BottomNavigationBarItem(icon: Icon(FeatherIcons.calendar), label: 'calendar'),
+          BottomNavigationBarItem(icon: Container(), label: 'calendar'),
         ],
       );
 
   FloatingActionButton _floatingActionButton({required BuildContext context}) =>
-      FloatingActionButton(
+      FloatingActionButton.large(
+
         onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddTodoScreen())),
         shape: CircleBorder(),
+        child: Icon(FeatherIcons.plus),
       );
 }

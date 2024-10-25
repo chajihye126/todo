@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primaryColor = Color(0xff90ddca);
+  static const Color primaryColor = Color(0xff546fff);
   static const Color accentColor = Color(0xffd974bc);
 
   static const Color whiteColor = Color(0xfffbfefd);
@@ -16,20 +16,10 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       foregroundColor: primaryColor
     ),
+    scaffoldBackgroundColor: Color(0xfffcfcfc),
+    bottomAppBarTheme: BottomAppBarTheme(color: Color(0xfffcfcfc)),
     textTheme: TextTheme(
       bodyMedium: TextStyle(color: Colors.black),
-      titleLarge: TextStyle(fontWeight: FontWeight.bold),
-    ),
-  );
-
-  static ThemeData darkTheme = ThemeData(
-    primaryColor: primaryColor,
-    colorScheme: ColorScheme.dark(
-      primary: primaryColor,
-      secondary: accentColor,
-    ),
-    textTheme: TextTheme(
-      bodyMedium: TextStyle(color: Colors.white),
       titleLarge: TextStyle(fontWeight: FontWeight.bold),
     ),
   );

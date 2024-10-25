@@ -19,7 +19,6 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
         appBar: _appBar(context: context),
         body: Column(
           children: [
-            Text('Add Task'),
             Text('Task title'),
             Container(
               width: ssW(context),
@@ -31,5 +30,7 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
     );
   }
 
-  AppBar _appBar({required BuildContext context}) => AppBar();
+  AppBar _appBar({required BuildContext context}) => AppBar(
+    title: Text('Add Task'),
+  );
 }
