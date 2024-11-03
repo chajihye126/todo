@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:todo/di/di.dart';
 import 'package:todo/presentation/view/tab_screen/add_todo_screen.dart';
+import 'package:todo/presentation/view/tab_screen/calendar_screen.dart';
+import 'package:todo/presentation/view/tab_screen/home_screen.dart';
+import 'package:todo/presentation/view/tab_screen/search_screen.dart';
 import 'package:todo/presentation/view_model/main_tab_view_model.dart';
 
 class MainTabScreen extends StatefulWidget {
@@ -25,10 +28,17 @@ class _MainTabScreenState extends State<MainTabScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> screens = [
+      HomeScreen(),
+      SearchScreen(),
+      CalendarScreen(),
+    ];
+
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Text('MainTabScreen'),
+        body: IndexedStack(
+          index: mainTabViewModel.bottomNavCurrentIndex,
+          children: screens,
         ),
         bottomNavigationBar: _bottomNavWidget(context: context),
         floatingActionButton: _floatingActionButton(context: context),
@@ -49,15 +59,17 @@ class _MainTabScreenState extends State<MainTabScreen> {
           BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(FeatherIcons.search), label: 'search'),
           BottomNavigationBarItem(icon: Icon(FeatherIcons.calendar), label: 'calendar'),
-          BottomNavigationBarItem(icon: Container(), label: 'calendar'),
+          BottomNavigationBarItem(icon: Container(), label: ''),
         ],
       );
 
   FloatingActionButton _floatingActionButton({required BuildContext context}) =>
-      FloatingActionButton.large(
-
+      FloatingActionButton.extended(
         onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddTodoScreen())),
         shape: CircleBorder(),
-        child: Icon(FeatherIcons.plus),
+        label: const Padding(
+          padding: EdgeInsets.all(12),
+          child: Icon(FeatherIcons.plus),
+        ),
       );
 }
