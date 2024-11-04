@@ -14,11 +14,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   DateTime _focusedDate = DateTime.now();
   final DateTime _selectedDate = DateTime.now();
 
-  void updateScreen() {
-    if (mounted) {
-      setState(() {});
-    }
-  }
+  void updateScreen() => mounted ? setState(() {}) : null;
 
   @override
   void initState() {
@@ -44,89 +40,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 10.sbH,
                 dateWidget(context: context),
                 20.sbH,
-                todoListContainer(context: context),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  Widget todoListItem({required BuildContext context, required bool isSelected, required String title, required String subText, required String time}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(5),
-          child: Column(
-            children: [
-              Container(
-                width: 15,
-                height: 15,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.amber, width: 2),
-                ),
-              ),
-              3.sbH,
-              SizedBox(
-                height: 50,
-                child: VerticalDivider(
-                  color: Colors.amber,
-                  width: 2,
-                  thickness: 2,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Column(
-          children: [
-            Container(
-              width: ssW(context) * 0.73,
-              decoration: BoxDecoration(
-                color: Colors.grey.withOpacity(.5),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          time,
-                          style: TextStyle(fontSize: 16, color: Colors.grey.withOpacity(0.5)),
-                        ),
-                      ],
-                    ),
-                    10.sbH,
-                    Text(subText, style: TextStyle(fontSize: 16, color: Colors.grey.withOpacity(.5)),)
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget todoListContainer({required BuildContext context}) {
-    return Column(
-      children: [
-        todoListItem(context: context, isSelected: false, title: 'Wakeup', subText: 'Early wakeup form bed and fresh', time: '7:00AM'),
-      ],
     );
   }
 
@@ -148,7 +66,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 child: Center(
                   child: Text(
                     DateFormat.E().format(DateTime(2024, 1, index)),
-                    style: dayOfWeek == index ? TextStyle(fontSize: 16, color: Colors.amber) : TextStyle(fontSize: 16, color: Colors.grey),
+                    // style: dayOfWeek == index ? TextStyle(fontSize: 16, color: Colors.amber) : TextStyle(fontSize: 16, color: Colors.grey),
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
                   ),
                 ),
               );
@@ -157,7 +76,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         ),
         SizedBox(
           width: ssW(context),
-          height: 40,
+          height: 50,
           child: GridView.builder(
             physics: NeverScrollableScrollPhysics(),
             itemCount: 7,
@@ -167,30 +86,36 @@ class _CalendarScreenState extends State<CalendarScreen> {
               final isSelected = _selectedDate.year == date.year && _selectedDate.month == date.month && _selectedDate.day == date.day;
 
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  GestureDetector(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${date.day}',
-                          style: isSelected
-                              ? TextStyle(fontSize: 16, color: Colors.amber, fontWeight: FontWeight.bold)
-                              : TextStyle(fontSize: 16),
-                        ),
-                        2.sbH,
-                        Container(
-                          width: 5,
-                          height: 5,
-                          decoration: BoxDecoration(
-                            color: isSelected ? Colors.amber : null,
-                            shape: BoxShape.circle,
-                          ),
-                        )
-                      ],
+                  isSelected ? Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(color: Colors.amber.withOpacity(.2), shape: BoxShape.circle),
+                    child: Text(
+                      '${date.day}',
+                      style: TextStyle(fontSize: 16, color: Colors.amber, fontWeight: FontWeight.bold),
+                    ),
+                  ) : Container(
+                    width: 50,
+                    height: 50,
+                    alignment: Alignment.center,
+                    child:  Text(
+                      '${date.day}',
+                      style: TextStyle(fontSize: 16),
                     ),
                   ),
+                  2.sbH,
+                  Container(
+                    width: 5,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: isSelected ? Colors.amber : null,
+                      shape: BoxShape.circle,
+                    ),
+                  )
                 ],
               );
             },

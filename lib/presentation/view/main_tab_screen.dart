@@ -30,8 +30,8 @@ class _MainTabScreenState extends State<MainTabScreen> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       HomeScreen(),
-      SearchScreen(),
       CalendarScreen(),
+      SearchScreen(),
     ];
 
     return SafeArea(
@@ -42,7 +42,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
         ),
         bottomNavigationBar: _bottomNavWidget(context: context),
         floatingActionButton: _floatingActionButton(context: context),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
@@ -57,19 +57,15 @@ class _MainTabScreenState extends State<MainTabScreen> {
         selectedItemColor: Color(0xff212529),
         items: [
           BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(FeatherIcons.search), label: 'search'),
           BottomNavigationBarItem(icon: Icon(FeatherIcons.calendar), label: 'calendar'),
-          BottomNavigationBarItem(icon: Container(), label: ''),
+          BottomNavigationBarItem(icon: Icon(FeatherIcons.search), label: 'search'),
         ],
       );
 
   FloatingActionButton _floatingActionButton({required BuildContext context}) =>
-      FloatingActionButton.extended(
+      FloatingActionButton(
         onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => AddTodoScreen())),
         shape: CircleBorder(),
-        label: const Padding(
-          padding: EdgeInsets.all(12),
-          child: Icon(FeatherIcons.plus),
-        ),
+        child: Icon(FeatherIcons.plus),
       );
 }
