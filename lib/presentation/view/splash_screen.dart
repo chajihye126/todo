@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/core/theme/app_theme.dart';
 import 'package:todo/core/utils/size_utils.dart';
 import 'package:todo/di/di.dart';
+import 'package:todo/presentation/view/home_screen.dart';
 import 'package:todo/presentation/view/main_tab_screen.dart';
 import 'package:todo/presentation/view_model/animation_view_model.dart';
 
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   void updateScreen() => setState(() {});
 
-  void _navigatorFunction() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainTabScreen()));
+  void _navigatorFunction() => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
 
   @override
   void dispose() {

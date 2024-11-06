@@ -3,7 +3,6 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:todo/di/di.dart';
 import 'package:todo/presentation/view/tab_screen/add_todo_screen.dart';
 import 'package:todo/presentation/view/tab_screen/calendar_screen.dart';
-import 'package:todo/presentation/view/tab_screen/home_screen.dart';
 import 'package:todo/presentation/view/tab_screen/search_screen.dart';
 import 'package:todo/presentation/view_model/main_tab_view_model.dart';
 
@@ -29,7 +28,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-      HomeScreen(),
+      // HomeScreen(),
       CalendarScreen(),
       SearchScreen(),
     ];
@@ -56,7 +55,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
         showUnselectedLabels: false,
         selectedItemColor: Color(0xff212529),
         items: [
-          BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: 'Home'),
+          // BottomNavigationBarItem(icon: Icon(FeatherIcons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(FeatherIcons.calendar), label: 'calendar'),
           BottomNavigationBarItem(icon: Icon(FeatherIcons.search), label: 'search'),
         ],
