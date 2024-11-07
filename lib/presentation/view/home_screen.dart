@@ -18,12 +18,16 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         appBar: _appBar(),
         drawer: _drawer(),
-        body: Center(
-          child: Text('HomeScreen'),
+        body: Column(
+          children: [
+
+          ],
         ),
       ),
     );
   }
+
+  Widget _calendarWidget() => Container();
 
   Drawer _drawer() => Drawer();
 

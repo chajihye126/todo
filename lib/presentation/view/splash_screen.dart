@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo/core/theme/app_theme.dart';
 import 'package:todo/core/utils/size_utils.dart';
 import 'package:todo/di/di.dart';
 import 'package:todo/presentation/view/home_screen.dart';
-import 'package:todo/presentation/view/main_tab_screen.dart';
 import 'package:todo/presentation/view_model/animation_view_model.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -38,13 +36,12 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppTheme.primaryColor,
         body: Center(
           child: AnimatedBuilder(
             animation: animationViewModel.animation,
             builder: (context, child) => Transform.translate(
               offset: Offset(0, animationViewModel.animation.value * ssH(context) / 2),
-              child: Image.asset('assets/logo.png', width: 200),
+              child: Image.asset('assets/logo.png', width: 150),
             ),
           ),
         ),
